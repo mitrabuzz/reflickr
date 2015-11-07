@@ -1,0 +1,17 @@
+#content, h1
+{
+    background: #111;
+}
+
+.full_photo
+{
+    width: 100%;
+    max-width: 1024px;
+}
+
+.image{
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
