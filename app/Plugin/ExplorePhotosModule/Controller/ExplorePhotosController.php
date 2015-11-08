@@ -3,10 +3,10 @@
 class ExplorePhotosController extends AppController{
 
     public function explore(){
-        if($_POST){
-            $tag = $this->request->data['ExplorePhotos']['photoTag'];
-            $results = $this->ExplorePhoto->searchByTag($tag);
-            $this->set(array('results' => $results));
+        if(isset($this->request->query['photoTag'])){
+            $photoTag = $this->request->query['photoTag'];
+            $results = $this->ExplorePhoto->searchByTag($photoTag);
+            $this->set(array('results' => $results, 'photoTag' => $photoTag));
 
         }
     }
@@ -15,6 +15,11 @@ class ExplorePhotosController extends AppController{
         if(!isset($this->request->named['id'])){
             throw new Exception('Id must be provided.');
         }
+
+        if($this->request->referer()){
+            $this->set(array('referrer' => $this->request->referer()));
+        }
+
         $photoId = $this->request->named['id'];
         $photoDetail = $this->ExplorePhoto->getPhotoDetail($photoId);
         $this->set(array('photoDetail' => $photoDetail));

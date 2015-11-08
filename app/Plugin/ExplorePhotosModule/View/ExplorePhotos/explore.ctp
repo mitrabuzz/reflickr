@@ -1,6 +1,6 @@
 <div>
-    <?= $this->Form->create('ExplorePhotos', array('action' => 'explore')) ?>
-    <?= $this->Form->input('photoTag', array('placeholder' => 'Enter tag to search photo', 'label' => false))?>
+    <?= $this->Form->create('ExplorePhotos', array('action' => 'explore', 'type' => 'get')) ?>
+    <?= $this->Form->input('photoTag', array('placeholder' => 'Enter tag to search photo', 'label' => false, 'value' => (isset($photoTag) ? $photoTag : '')))?>
     <?= $this->Form->end() ?>
 
     <?php if(!empty($results)): ?>
