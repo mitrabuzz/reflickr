@@ -2,7 +2,7 @@
 
 class ExplorePhoto extends AppModel {
 
-    public function searchByTag($photoTag = null)
+    public function searchByTag($photoTag = null, $page = null)
     {
         if ($photoTag) {
             $arrContextOptions = array(
@@ -12,7 +12,11 @@ class ExplorePhoto extends AppModel {
                 ),
             );
 
-            $url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=dd576c6de02d40050b4705bd066bbcec&format=rest&tags=' . $photoTag;
+            if(!$page){
+                $page = 1;
+            }
+
+            $url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&per_page=50&page='.$page.'&api_key=dd576c6de02d40050b4705bd066bbcec&format=rest&tags=' . $photoTag;
             if ($response = file_get_contents($url, true, stream_context_create($arrContextOptions))) {
                 return $response;
             }
