@@ -16,7 +16,7 @@ class ExplorePhoto extends AppModel {
                 $page = 1;
             }
 
-            $url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&per_page=50&page='.$page.'&api_key=dd576c6de02d40050b4705bd066bbcec&format=rest&tags=' . $photoTag;
+            $url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&per_page=50&page='.$page.'&api_key='.Configure::read('REFLICKR_APP_KEY').'&format=rest&tags=' . $photoTag;
             if ($response = file_get_contents($url, true, stream_context_create($arrContextOptions))) {
                 return $response;
             }
@@ -32,7 +32,7 @@ class ExplorePhoto extends AppModel {
                     "verify_peer_name" => false,
                 ),
             );
-            $url = 'https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=dd576c6de02d40050b4705bd066bbcec&photo_id='.$photoId.'&format=rest';
+            $url = 'https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key='.Configure::read('REFLICKR_APP_KEY').'&photo_id='.$photoId.'&format=rest';
             if ($response = file_get_contents($url, true, stream_context_create($arrContextOptions))) {
                 return $response;
             }

@@ -6,7 +6,7 @@
 
 .image-container
 {
-    padding-top: 30px;
+    margin: 20px auto;
 }
 h1
 {
@@ -22,16 +22,29 @@ h1
 
 .image
 {
-    margin: 0 auto;
+    margin: 20px auto;
     position: relative;
     width: 100%;
     text-align: center;
 }
 
-.back-button
+.back-button, a.tag
 {
     color: white;
     padding: 20px;
     border: 3px solid;
     text-decoration: none;
+    display: inline-block;
+}
+
+a.tag
+{
+    display: inline-block;
+    margin-top: 12px;
+}
+
+.related-tags
+{
+    background: #111;
+    color: #c43c35;
 }

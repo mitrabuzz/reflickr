@@ -383,3 +383,9 @@ Cache::config('_cake_model_', array(
 	'serialize' => ($engine === 'File'),
 	'duration' => $duration
 ));
+
+/*
+ * Configure Default Flickr App Key
+ */
+
+Configure::write('REFLICKR_APP_KEY', 'dd576c6de02d40050b4705bd066bbcec');
